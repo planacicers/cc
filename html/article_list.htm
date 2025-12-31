@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="zh-CN">
+<title>{$cfg[titles]}</title>
+<meta name="keywords" content="{$cfg[seo_keywords]}">
+<meta name="description" content="{$cfg[seo_description]}">
+<link rel="shortcut icon" href="{$cfg[tpl]}img/favicon.ico">
+<link rel="stylesheet" href="{$cfg[tpl]}css/style.css">
+<link rel="stylesheet" href="{$cfg[tpl]}css/font-awesome.min.css" media="screen">
+<link rel="stylesheet" href="{$cfg[tpl]}css/shortcodesa.css" id="shortcodes-ultimate-extra-css" data-minify="1" media="all">
+<link rel="stylesheet" href="{$cfg[tpl]}css/shortcodesb.css" id="su-shortcodes-css" data-minify="1" media="all">
+<link rel="stylesheet" href="{$cfg[tpl]}css/icons.css" id="su-icons-css" data-minify="1" media="all">
+<script src="{$cfg[tpl]}js/jquery-2.2.4.min.js"></script> 
+<script src="{$cfg[tpl]}js/jquery.SuperSlide.2.1.1.js"></script>
+</head>
+<body>
+<!-- header -->
+<header class="header">
+  <div class="head container">
+    <h1 class="logo"> <a href="{$cfg[weburl]}" rel="home"><img src="{$cfg[tpl]}img/logo.png" alt="{$cfg[webname]}"></a> </h1>
+    <div class="cmsads_top"> 
+      <div class="cmsads_top-a"> <script src={$cfg[tpl]}ad/thea1.js></script> </div>
+      <div class="cmsads_top-b"> <script src={$cfg[tpl]}ad/thea2.js></script> </div> 
+    </div>
+  </div>
+  <menu id="monavber" class="header-nav right" data-type="index">
+    <div id="logos">
+      <h2><a href="{$cfg[weburl]}" title="{$cfg[webname]}">{$cfg[webname]}</a></h2>
+    </div>
+    <a class="moble-bars" id="btn-bars"><i class="fa fa-bars fa-fe"></i></a> <a href="javascript:;" class="btn btn_search"><i class="fa fa-search"></i></a>
+    <div class="container">
+      <ul class="navbar left">
+        {block:navigate} <li{if:empty($cfg_var['topcid'])} class="on"{/if} title="网站首页"><a href="{$cfg[weburl]}">网站首页</a>
+        </li>
+        {loop:$data $v} <li{if:$cfg_var['topcid'] == $v['cid']} class="on"{/if} title="{$v[name]}"><a href="{$v[url]}"><span id="{$v['cid']}">{$v[name]}</span></a>
+        </li>
+        {/loop}
+        {/block}
+      </ul>
+      <ul class="navbar-right right">
+        {if:$cfg[open_user_login]}
+        {if:$cfg[open_user]}
+        {if:$_uid}
+        <li class=""><a href="{$my_url}" rel="nofollow" target="_blank"><i class="fa fa-user"></i> Login</a></li>
+        {else}
+        <li><a href="{$register_url}" rel="nofollow" target="_blank"><i class="fa fa-plus-square"></i> Register</a></li>
+        {/if}
+        {/if}
+        {/if}
+      </ul>
+      <div class="search">
+        <form onsubmit="return checkSearchForm()" method="get" name="searchform" id="searchform" class="searchbox" action="{$cfg[webdir]}index.php" >
+          <input type="hidden" name="u" value="search-index">
+          <input type="hidden" name="mid" value="2">
+          <input type="text" name="keyword" class="s_w" placeholder="找不到内容？搜索下试试">
+          <input type="submit" value="搜索" class="an">
+          <input name="dopost" value="search" type="hidden">
+        </form>
+      </div>
+    </div>
+  </menu>
+</header>
+<!-- AD -->
+<div class="container asds" style="position: relative;">
+  <div class="asds-a">
+    <!-- <object style="border:0px" type="text/html" data="{$cfg[tpl]}ad.html" width="1155" height="360"> </object> -->
+ {inc:ad.top.htm}
+  </div>
+  <style>
+			.asds-a{width:auto;margin-right: 0px;}
+			</style>
+  <a id="ads-zz" style="position: absolute;top: 205px;right: 5px;font-size: 12px;color: #cccccc;" href="javascript:void(0);">关闭</a> </div>
+<div class="container wapasds waptopad">
+  <ul>
+  </ul>
+</div>
+<div class="container guanbi_ad">
+  <div class="content-wrap">
+    <div class="content">
+      <div class="excerpts">
+        <div id= "tab_tt_tab" class="list_title">
+          <dl>
+            <dd id="one1" onclick="setTab('one',1)">{$cfg_var[name]}</dd>
+          </dl>
+        </div>
+        <div class="tab_main"> 
+          <!---->
+          <div class="kwLink asds"> {inc:ad.home.main.htm} </div>
+          <div class="wapasds"> </div>
+          <ul id="con_one_1">
+            {block:global_cate mid="2" pagenum="20" pageoffset="2" dateformat="Y-m-d" showcate="1"}
+            {loop:$gdata[list] $v}
+            <article class="post" data-id="{$v[id]}">
+              <div class="post-img loading"> <a target="_blank" class="pic float-left" href="{$v[url]}" title="{$v[title]}" rel="bookmark"> <img width="190" height="110" src="{$v[pic]}" alt="{$v[title]}"> </a> </div>
+              <header>
+                <h2><a target="_blank" href="{$v[url]}" title="{$v[title]}" rel="bookmark">{$v[title]}</a></h2>
+              </header>
+              <p class="post-text"> {$v[intro]}...</p>
+              <footer> <span><i class="fa fa-bookmark fa-fw"></i><a target="_blank" href="{$v[cate_url]}" title="{$v[cate_name]}">{$v[cate_name]}</a></span> <span class="time"><i class="fa fa-clock-o fa-fw"></i>{$v[date]}</span> </footer>
+            </article>
+            {/loop}
+            {/block}
+          </ul>
+        </div>
+        <div class="wapasds"> </div>
+        <div class="pagination"> {$gdata[pages]} </div>
+        <style>
+.pagination b{margin:3px 5px 3px 0;float:center;padding:7px 14px;border-radius:4px;font-size:12px;text-align:center;color:#fff;background-color:#3f2814}.pagination a{margin:3px 5px 3px 0;float:center;padding:7px 14px;border-radius:4px;font-size:12px;text-align:center;color:#666;background-color:#ddd}
+</style>
+      </div>
+    </div>
+    <!--侧栏-->
+    <div class="sidebar">
+      <div class="widget widget-tie zhannei">
+        <form name="searchform" method="get" action="{$cfg[webdir]}index.php" id="searchform2">
+          <input type="hidden" name="u" value="search-index">
+          <input type="hidden" name="mid" value="2">
+          <input type="text" value="" name="keyword" id="s" placeholder="输入搜索内容" required>
+          <button type="submit" id="searchsubmit">搜索</button>
+        </form>
+      </div>
+      <!---->
+      <div class="widget widget-tie 001">
+        <div> {inc:ad.home.side1.htm} </div>
+      </div>
+      <div class="widget widget-tie hotComments">
+        <h3>推荐套餐</h3>
+        <hr>
+        <ul>
+          <div class="sidebar">
+            <div class="sue-panel" data-url="" data-target="self" style="background-color:#ffffff;color:#9b673a;border-radius:0px;-moz-border-radius:0px;-webkit-border-radius:0px;box-shadow:0px 1px 2px #eeeeee;-moz-box-shadow:0px 1px 2px #eeeeee;-webkit-box-shadow:0px 1px 2px #eeeeee;border:1px solid #9b673a">
+              <div class="sue-panel-content sue-content-wrap" style="padding:15px;text-align:left"> {block:list_flag flag="1" limit="10"}
+                {php}$rank = 1;{/php}
+                {loop:$data[list] $v}
+                <p><strong>{$rank}. <a href="{$v[url]}" target="_blank" rel="noopener">{$v[title]}</a></strong></p>
+                {php}$rank++;{/php}
+                {/loop}
+                {/block} </div>
+            </div>
+          </div>
+          {block:list_flag flag="2" limit="4"}
+          {loop:$data[list] $v}
+          <li>
+            <div class="hotComments-one-img"> <a target="_blank" href="{$v[url]}" title="{$v[title]}" class=""> <img src="{$v[pic]}" alt="{$v[title]}"> </a> </div>
+            <div class="hotComments-recent-title">
+              <h4 class="title"><a target="_blank" href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h4>
+            </div>
+          </li>
+          {/loop}
+          {/block}
+        </ul>
+      </div>
+      
+      <!-- TAB -->
+      <div class="widget slideTxtBox">
+        <div class="hd">
+          <ul>
+            <li>猜你喜欢</li>
+            <li>热门浏览</li>
+          </ul>
+        </div>
+        <div class="bd">
+          <ul>
+            {block:list_rand mid="2" limit="10"}
+            {loop:$data[list] $v}
+            <li><a target="_blank"  href="{$v[url]}"><i class="fa fa-angle-right"></i>{$v[title]}</a></li>
+            {/loop}
+            {/block}
+          </ul>
+          <ul>
+            {block:list_rand mid="2" limit="10"}
+            {loop:$data[list] $v}
+            <li><a target="_blank" href="{$v[url]}"><i class="fa fa-angle-right"></i>{$v[title]}</a></li>
+            {/loop}
+            {/block}
+          </ul>
+        </div>
+      </div>
+      <script id="jsID" type="text/javascript">
+				 jQuery(".slideTxtBox").slide({trigger:"click"});
+				</script> 
+      <!---->
+      <div class="widget widget-tie niubi2">
+        <div> {inc:ad.home.side2.htm} </div>
+      </div>
+      
+      <!--热门浏览-->
+      <div class="widget widget-tie divPrevious">
+        <h3>热门浏览</h3>
+        <hr>
+        <ul>
+          {block:list_top orderby="views" limit="10"}
+          {php}$rank = 1;{/php}
+          {loop:$data[list] $v}
+          <li> <a target="_blank" href="{$v[url]}" title="{$v[title]}"> {$v[title]} </a> </li>
+          {php}$rank++;{/php}
+          {/loop}
+          {/block}
+        </ul>
+      </div>
+      <!--热门标签-->
+      <div class="widget widget-tie divTags">
+        <h3>热门标签</h3>
+        <hr>
+        <ul>
+          {block:taglist mid="2" limit="30" orderby="count"}
+          {loop:$data[list] $v}
+          <li><a href="{$v[url]}">{$v[name]}<span class="tag-count"> ({$v[count]})</span></a></li>
+          {/loop}
+          {/block}
+        </ul>
+      </div>
+      <!---->
+      <div class="widget widget-tie zanzhu">
+        <div> {inc:ad.home.side3.htm} </div>
+      </div>
+      <!--本站声明-->
+      <div class="widget widget-tie divComments">
+        <h3>本站声明</h3>
+        <hr>
+        <ul>
+          <div class="sidebar">
+            <div class="sue-panel" data-url="" data-target="self" style="background-color:#ffffff;color:#9b673a;border-radius:0px;-moz-border-radius:0px;-webkit-border-radius:0px;box-shadow:0px 1px 2px #eeeeee;-moz-box-shadow:0px 1px 2px #eeeeee;-webkit-box-shadow:0px 1px 2px #eeeeee;border:1px solid #9b673a">
+              <div class="sue-panel-content sue-content-wrap" style="padding:15px;text-align:left">
+                <p>{$cfg[copyright]}</p>
+                <p>客服QQ：{$cfg[webqq]}</p>
+                <p>客服微信：{$cfg[webweixin]}</p>
+                <p>客服邮箱：{$cfg[webmail]}</p>
+              </div>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <!----> 
+    {block:listeach nocids="3,4,5,6,7,8,9,10" limit="5"}
+    {loop:$data $v}
+    <div class="hot-raiders">
+      <div class="raiders-title">
+        <h2>{$v[cate_name]}</h2>
+        <span><a target="_blank" href="{$v[cate_url]}">更多</a></span>
+        <hr>
+      </div>
+      <div class="raiders-content">
+        <ul>
+          {loop:$v[list] $lv}
+          <li>
+            <div class="raiders-one-img"> <a href="{$lv[url]}" title="{$lv[title]}" class=""> <img width="228" height="113" src="{$lv[pic]}" alt="{$lv[title]}">
+              <h4 class="title">{$lv[title]}</h4>
+              </a> </div>
+          </li>
+          {/loop}
+        </ul>
+      </div>
+    </div>
+    {/loop}
+    {/block} 
+    
+    <!-- 友情链接 -->
+    <div class="links-txt text-center"> {if:empty($cfg_var['topcid'])}
+      <div class="links-title"> 友情链接 </div>
+      <ul class="list-unstyled list-inline text-left">
+        {block:links limit="50"}
+        {loop:$data $v}
+        <li><a href="{$v[url]}" target="_blank">{$v[name]}</a></li>
+        {/loop}
+        {/block}
+      </ul>
+      {/if} </div>
+  </div>
+</div>
+<div class="footnav text-center">
+  <div class="container">
+    <div class="row f-magse">
+      <div class="magse-item animate-box fadeInUp animated">
+        <h4>本站</h4>
+        <ul>
+          {block:navigate alias="foot1"}
+          {loop:$data $v}
+          <li><a href="{$v[url]}" title="{$v[name]}" target="_blank">{$v[name]}</a></li>
+          {/loop}
+          {/block}
+        </ul>
+      </div>
+      <div class="magse-item animate-box fadeInUp animated">
+        <h4>栏目</h4>
+        <ul>
+          {block:navigate alias="foot2"}
+          {loop:$data $v}
+          <li><a href="{$v[url]}" title="{$v[name]}" target="_blank">{$v[name]}</a></li>
+          {/loop}
+          {/block}
+        </ul>
+      </div>
+      <div class="magse-item animate-box fadeInUp animated">
+        <h4>套餐</h4>
+        <ul>
+          {block:navigate alias="foot3"}
+          {loop:$data $v}
+          <li><a href="{$v[url]}" title="{$v[name]}" target="_blank">{$v[name]}</a></li>
+          {/loop}
+          {/block}
+        </ul>
+      </div>
+      <div class="magse-item animate-box fadeInUp animated">
+        <h4>支持</h4>
+        <ul>
+          {block:navigate alias="foot4"}
+          {loop:$data $v}
+          <li><a href="{$v[url]}" title="{$v[name]}" target="_blank">{$v[name]}</a></li>
+          {/loop}
+          {/block}
+        </ul>
+      </div>
+      <div class="magse-item info animate-box fadeInUp animated">
+        <ul>
+          <li> <span class="wxspan">公众号</span> <span class="wx-span"> <img src="{$cfg[tpl]}img/weixin.png" alt="" class="active"> </span> </li>
+          <li> <span class="wxspan">小程序</span> <span class="wx-span"> <img src="{$cfg[tpl]}img/qq.png" alt="" class="active"> </span> </li>
+          <li> <span class="wxspan">手机版</span> <span class="wx-span"> <img src="{$cfg[tpl]}img/shouji.png" alt="" class="active"> </span> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <div class=" text-center">
+    <p>Copyright © {php} echo $showtime=date("Y"); {/php} {$cfg[webname]} All Rights Reserved. </p>
+    <p> <a href="https://beian.miit.gov.cn/" target="_blank">{$cfg[beian]}</a> </p>
+  </div>
+</footer>
+<div class="bottom_tools" style="bottom: 40px;">
+  <div class="qr_tool">二维码</div>
+  <a id="scrollUp" href="javascript:;" title="飞回顶部" style="display: block;"></a> <img class="qr_img" src="{$cfg[tpl]}img/weixin.png" width="173" height="234" alt="" style="display: none;"> </div>
+<script src="{$cfg[tpl]}js/theia-sticky-sidebar.min.js"></script>
+<script src="{$cfg[tpl]}js/indextab.js"></script> 
+{$cfg[tongji]}
+{inc:footer.htm}
+</body>
+</html>
