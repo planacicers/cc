@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>免费苹果ID账号分享</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .output {
+      white-space: pre-line;
+      margin-top: 20px;
+      background: #f0f0f0;
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>免费苹果ID账号分享</h2>
+    <div class="output" id="outputArea"></div>
+  </div>
+
+  <script>
+    function randomString(length) {
+      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let result = "";
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+
+    function generateEmail(domain) {
+      return `${randomString(10)}@${domain}`;
+    }
+
+    function generatePassword() {
+      return (
+        randomString(1).toUpperCase() +
+        randomString(1).toLowerCase() +
+        randomString(2) +
+        Math.floor(100 + Math.random() * 900)
+      );
+    }
+
+    function generateAccounts() {
+      const accounts = {
+        "美国苹果id账号": generateEmail("hotmail.com"),
+        "韩国苹果id账号": generateEmail("hotmail.com"),
+        "日本苹果id账号": generateEmail("163.com"),
+        "台湾苹果id账号": generateEmail("hotmail.com"),
+        "香港苹果id账号": generateEmail("hotmail.com"),
+        "大陆苹果id账号": generateEmail("icloud.com")
+      };
+
+      let output = "账号状态：正常\n\n";
+      for (const [region, email] of Object.entries(accounts)) {
+        output += `【${region}】\n账号：${email}\n密码：${generatePassword()}\n\n`;
+      }
+
+      document.getElementById('outputArea').innerText = output;
+    }
+
+    // 页面加载时自动生成
+    window.onload = generateAccounts;
+  </script>
+  <h3 class="wp-block-heading">禁止操作项</h3>
+  <p>共享的苹果id账号禁止在icloud设置登录！手机会成砖块的！</p>
+  <p>擅自用于icloud设置登录的用户一旦出现锁机的情况本站概不负责，在AppStore商店登录是100%安全的，希望大家遵守使用规则，避免带来不必要的损失。</p>
+  <h3 class="wp-block-heading">美国游戏和app怎么充值？</h3>
+  <p>美国游戏和app都非常的丰富，想要对其进行充值在国内是可以完成的，需要大家通过第三方平台购买礼品卡，礼品卡支持在美国游戏和app充值。</p>
+  <p>大家注意在购买礼品卡是通过靠谱的第三方平台购买，尽可能的少量多次购买，礼品卡在美国是常用的支付手段，为广大用户提供便捷的服务。</p>
+  <p class="has-vivid-green-cyan-color has-text-color has-link-color "><strong>由于共享的美国id苹果账号使用的人比较多，加上苹果对境外号管控很严，使用人数一多就非常容易出现「锁定」或「未激活」的情况，如须经常使用，请购买独享美国id（独享账号包含账号密码密保等所有资料）</strong></p>
+  <h3 class="wp-block-heading">美国真实地址模板</h3>
+  <p>对于想要自己注册美国苹果id账号的用户，这里小编给大家分享一套美国真实地址模板，方便大家使用，但注意使用的人多了就会失效的。</p> 
+  <p>国家名：United States（或简写为USA）</p> 
+<p>街道地址：123 Main St</p> 
+<p>城市名：Anytown</p> 
+<p>州名：California</p> 
+<p>邮编：99802</p> 
+<p>总结：免费的苹果id账号分享结束，由于分享的数量有限，需要的用户赶紧去领取使用吧，关注本站让您轻轻松松体验全球服务。</p> 
+</body>
+</html>
